@@ -7,6 +7,7 @@
   <version>1.0-SNAPSHOT</version>
   <name>israqua Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -15,7 +16,20 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  
   <build>
     <finalName>israqua</finalName>
   </build>
+  
+  <distributionManagement>
+		 <snapshotRepository>
+		    <id>nexus</id>
+		    <url>http://40.87.100.1:8081/repository/israqua-snapshot/</url>
+		 </snapshotRepository>
+		
+		<repository>
+		    <id>nexus</id>
+		    <url>http://40.87.100.1:8081/repository/israqua-release/</url>
+		</repository>
+  	</distributionManagement>
 </project>
