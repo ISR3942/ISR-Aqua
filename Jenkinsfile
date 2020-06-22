@@ -1,13 +1,6 @@
 pipeline{
     agent any
     stages{
-        stage('git checkout') {
-            steps {
-                git branch: 'master', 
-                    credentialsId: 'git', 
-                    url: 'https://github.com/ISR3942/ISR-Aqua'
-            }
-        }
         
         stage('Package and Nexus Deploy') {
             steps {
