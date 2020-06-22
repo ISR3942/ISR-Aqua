@@ -22,4 +22,12 @@ pipeline{
             }
         }
     }
+    
+    post {
+      failure {
+        mail bcc: '', body: 'Hello, your job said thusssssssssss', 
+             cc: '', from: '', replyTo: '', subject: 'Job failed', 
+             to: 'indukurisriramaraju7@gmail.com'
+      }
+    }
 }
