@@ -1,5 +1,9 @@
 pipeline{
     agent any
+    environment {
+        TOMCAT_HOST = "ec2-user@52.167.158.215"
+        TOMCAT_SVC = "service tomcat"
+    }
     stages{
         
         stage('Package and Nexus Deploy') {
@@ -11,9 +15,9 @@ pipeline{
         stage('Deploy to Tomcat') {
             steps {
                 sshagent(['Tomcat-cred']) {
-                    sh script: 'scp -o StrictHostKeyChecking=no target/israqua.war ec2-user@52.167.158.215:/opt/tomcat8/webapps/'
-                    sh script: 'ssh ec2-user@52.167.158.215 service tomcat stop'
-                    sh script: 'ssh ec2-user@52.167.158.215 service tomcat start'
+                    sh script: "scp -o StrictHostKeyChecking=no target/israqua.war ${TOMCAT_HOST}:/opt/tomcat8/webapps/"
+                    sh script: "ssh ${TOMCAT_HOST} ${TOMCAT_SVC} stop"
+                    sh script: "ssh ${TOMCAT_HOST} ${TOMCAT_SVC} start"
                 }
             }
         }
