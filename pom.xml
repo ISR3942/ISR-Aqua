@@ -31,5 +31,5 @@
 		    <id>nexus</id>
 		    <url>http://40.87.100.1:8081/repository/israqua-release/</url>
 		</repository>
-  	</distributionManagement>
+  </distributionManagement>
 </project>
