@@ -1,0 +1,23 @@
+pipeline{
+    agent any
+    parameters {
+      choice choices: ['Dev', 'Test', 'Stg', 'Prod'], description: 'Choose the env to deploy', name: 'deployEnv'
+      choice choices: ['develop', 'release', 'master'], description: 'Choose the branch to deploy', name: 'branchName'
+    }
+    stages{
+        
+        stage('Package and Nexus Deploy') {
+            steps {
+              echo "We are building ${params.branchName} branch" 
+            }
+        }
+        
+        stage('Deploy to Tomcat') {
+            steps {
+              echo "We are deploying to dev environment with ip ${serversMap[params.deployEnv]}"
+            
+            }
+        }
+    }
+    
+}
