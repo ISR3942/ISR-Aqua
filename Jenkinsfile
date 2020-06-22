@@ -25,8 +25,8 @@ pipeline{
     
     post {
       failure {
-        mail bcc: '', body: 'Hello, your job said thusssssssssss', 
-             cc: '', from: '', replyTo: '', subject: 'Job failed', 
+          mail body: "Hello, your job, ${env.JOB_NAME}, said thusssssssssss. Find details under ${env.BUILD_URL}", 
+            subject: "jenkins-${env.JOB_NAME}-${env.BUILD_NUMBER} failed", 
              to: 'indukurisriramaraju7@gmail.com'
       }
     }
